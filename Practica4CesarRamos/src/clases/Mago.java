@@ -1,6 +1,6 @@
 package clases;
 
-public class Mago extends Personaje {
+public class Mago extends Personaje implements Jugable {
 
 	private final static int ATAQUE_MAGIA = 20;
 	private final static int ATAQUE_SIN_MAGIA = 5;
@@ -26,21 +26,10 @@ public class Mago extends Personaje {
 	}
 
 	@Override
-	public void curar() {
-		if (magia > 0) {
-			this.vida += this.ataque;
-			if (this.vida > this.vidaInicial) {
-				this.vida = this.vidaInicial;
-			}
-			magia--;
-		}
-	}
-
-	@Override
 	public void resetear() {
 		super.resetear();
 		this.magia = MAGIA;
-		this.ataque = ATAQUE_MAGIA;
+		this.getAtaque = ATAQUE_MAGIA;
 	}
 
 	@Override

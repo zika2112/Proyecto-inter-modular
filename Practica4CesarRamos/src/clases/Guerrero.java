@@ -1,6 +1,6 @@
 package clases;
 
-public class Guerrero extends Personaje {
+public class Guerrero extends Personaje implements Jugable{
 	private final static int ATAQUE = 20;
 	private final static int POCIONES = 2;
 	private final static int DEFENSA = 10;
@@ -11,13 +11,6 @@ public class Guerrero extends Personaje {
 		this.pociones = POCIONES;
 	}
 
-	@Override
-	public void curar() {
-		if (pociones > 0) {
-			this.vida = this.vidaInicial;
-			pociones--;
-		}
-	}
 
 	@Override
 	public void resetear() {
