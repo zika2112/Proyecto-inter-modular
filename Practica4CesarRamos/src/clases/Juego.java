@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Juego {
-	private final static String[] nombresEnemigos = { "Fenrrir, el lobo", "Derek, el enano", "Custreco, el goblin",
-			"Sparda, el caballero demonio", "Maliketh, la hoja negra", "Odón, de la Hermandad de la Sal",
+	private final static String[] nombresEnemigos = { "Lady Maria", "Malenia Goddes of Rot", "Slave Knight Gael",
+			"Sparda the devil knight", "Maliketh the Black Blade", "Ludwig",
 			"Afilaor, Centinela del Esméril" };
 
 	private ArrayList<Enemigo> enemigos;
