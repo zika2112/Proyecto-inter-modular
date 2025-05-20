@@ -1,11 +1,11 @@
 package clases;
 
 public abstract class  Personaje {
-	private int vida;
-	private int vidaInicial;
-	private int ataque;
-	private int defensa;
-	private String nombre;
+	protected int vida;
+	protected int vidaInicial;
+	protected int ataque;
+	protected int defensa;
+	protected String nombre;
 
 	public Personaje() {
 
@@ -84,4 +84,6 @@ public abstract class  Personaje {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
+
 }

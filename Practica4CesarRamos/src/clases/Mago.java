@@ -24,6 +24,19 @@ public class Mago extends Personaje implements Jugable {
 		}
 
 	}
+
+	@Override
+	public void resetear() {
+		super.resetear();
+		this.magia = MAGIA;
+		this.ataque = ATAQUE_MAGIA;
+	}
+
+	@Override
+	public String toString() {
+		return super.toString() + "; Magia : " + magia;
+	}
+
 	@Override
 	public void curar() {
 		if (magia > 0) {
@@ -33,17 +46,5 @@ public class Mago extends Personaje implements Jugable {
 			}
 			magia--;
 		}
-	}
-	
-	@Override
-	public void resetear() {
-		super.resetear();
-		this.magia = MAGIA;
-		this.getAtaque = ATAQUE_MAGIA;
-	}
-
-	@Override
-	public String toString() {
-		return super.toString() + "; Magia : " + magia;
 	}
 }

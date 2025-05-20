@@ -9,6 +9,7 @@ public class Enemigo extends Personaje {
 	}
 
 	public void iniciarEnemigo(String nombre) {
+		
 		Random random = new Random();
 		this.nombre = nombre;
 		this.vida = random.nextInt(81) + 20;
