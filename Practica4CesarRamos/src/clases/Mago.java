@@ -24,7 +24,17 @@ public class Mago extends Personaje implements Jugable {
 		}
 
 	}
-
+	@Override
+	public void curar() {
+		if (magia > 0) {
+			this.vida += this.ataque;
+			if (this.vida > this.vidaInicial) {
+				this.vida = this.vidaInicial;
+			}
+			magia--;
+		}
+	}
+	
 	@Override
 	public void resetear() {
 		super.resetear();

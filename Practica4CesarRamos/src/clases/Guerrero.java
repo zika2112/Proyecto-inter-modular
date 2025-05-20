@@ -17,7 +17,13 @@ public class Guerrero extends Personaje implements Jugable{
 		super.resetear();
 		this.pociones = POCIONES;
 	}
-
+	@Override
+	public void curar() {
+		if (pociones > 0) {
+			this.vida = this.vidaInicial;
+			pociones--;
+		}
+	}
 	@Override
 	public String toString() {
 		return super.toString() + "; Pociones : " + pociones;
