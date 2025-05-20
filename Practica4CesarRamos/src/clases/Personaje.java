@@ -1,11 +1,11 @@
 package clases;
 
-public class Personaje {
-	protected int vida;
-	protected int vidaInicial;
-	protected int ataque;
-	protected int defensa;
-	protected String nombre;
+public abstract class  Personaje {
+	private int vida;
+	private int vidaInicial;
+	private int ataque;
+	private int defensa;
+	private String nombre;
 
 	public Personaje() {
 
@@ -30,10 +30,6 @@ public class Personaje {
 		if (otro.vida < 0) {
 			otro.vida = 0;
 		}
-	}
-
-	public void curar() {
-
 	}
 
 	public void resetear() {
