@@ -4,10 +4,10 @@ import java.util.Scanner;
 import clases.Enemigo;
 import clases.Juego;
 
-public class Metodos {
+public class Metodos  {
     private Scanner scanner;
     private Juego juego;
-    
+    	
     public Metodos() {
         scanner = new Scanner(System.in);
         juego = new Juego();
@@ -88,6 +88,7 @@ public class Metodos {
             System.out.println(enemigo.getNombre() + " ataca a " + juego.getJugador().getNombre());
               juego.getSiguiente().atacar(juego.getJugador());
         }
+        
     }
     
     private void finalizarPartida() {
