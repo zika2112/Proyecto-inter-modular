@@ -1,7 +1,9 @@
 package programa;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 import clases.Enemigo;
 import clases.Juego;
@@ -38,6 +40,16 @@ public class Metodos  {
 
 	public void registroDeRecord() {
 		File fichero = new File("Mejor Puntuacion.txt");
+		try {
+			PrintWriter escritor = new PrintWriter(fichero);
+			escritor.println("New Record (sal de casa)"
+					+ "\n. Nombre Jugador/a: " + juego.getJugador().getNombre() 
+					+ "\n. Rondas Jugadas: "+ juego.getNRondas()
+					+ "\n. Rondas Ganadas " + juego.getRonda());
+			escritor.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 		if (fichero.exists()) {
 			System.out.println("Ruta" + fichero.getPath());
 		}else {
