@@ -1,5 +1,7 @@
 package programa;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Scanner;
 import clases.Enemigo;
 import clases.Juego;
@@ -31,10 +33,23 @@ public class Metodos  {
             
             finalizarPartida();
             jugarOtraVez = preguntarJugarOtraVez();
-        }
-    }
-    
-    private void iniciarPartida() {
+		}
+	}
+
+	public void registroDeRecord() {
+		File fichero = new File("Mejor Puntuacion.txt");
+		if (fichero.exists()) {
+			System.out.println("Ruta" + fichero.getPath());
+		}else {
+			try {
+				fichero.createNewFile();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	private void iniciarPartida() {
         System.out.println("Bienvenido al RandomSouls:");
         System.out.print("¿Cuántas rondas quieres jugar? ");
         int rondas = scanner.nextInt();
@@ -97,8 +112,10 @@ public class Metodos  {
     private void finalizarPartida() {
         if (juego.getJugador().muerto()) {
             System.out.println("Has perdido ,consejo del juego: Get good");
+            registroDeRecord();
         } else {
             System.out.println("Felicidades has eliminado a todos los enemigos");
+            registroDeRecord();
         }
     }
     
