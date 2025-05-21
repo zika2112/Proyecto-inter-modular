@@ -1,4 +1,3 @@
 New Record (sal de casa)
-. Nombre Jugador/a: Toshi
-. Rondas Jugadas: 10
-. Rondas Ganadas 1
+. Nombre Jugador/a: Magordito
+. Rondas Ganadas: 0
