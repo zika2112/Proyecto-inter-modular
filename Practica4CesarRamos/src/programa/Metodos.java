@@ -43,9 +43,14 @@ public class Metodos {
 
 		try {
 			PrintWriter escritor = new PrintWriter(fichero);
-			escritor.println("New Record (sal de casa)" + "\n. Nombre Jugador/a: " + juego.getJugador().getNombre()
-					+ "\n. Rondas Ganadas: " + juego.getRonda());
-			escritor.close();
+			int record = 0;
+			record = juego.getRonda();
+			if (juego.getRonda() > record) {
+				escritor.println("New Record (sal de casa)" + "\n. Nombre Jugador/a: " + juego.getJugador().getNombre()
+						+ "\n. Rondas Ganadas: " 
+						+ "\n. " + juego.getRonda());
+				escritor.close();
+			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
