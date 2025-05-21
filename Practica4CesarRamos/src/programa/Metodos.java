@@ -13,6 +13,9 @@ public class Metodos {
 	private Scanner scanner;
 	private Juego juego;
 	File fichero = new File("Mejor Puntuacion.txt");
+	int recordPartida = 0;
+	int recordActual = 0;
+
 	public Metodos() {
 		scanner = new Scanner(System.in);
 		juego = new Juego();
@@ -62,7 +65,7 @@ public class Metodos {
 
 	}
 
-	public void leerRecord() {
+	public int leerRecord(int recordActual) {
 		Scanner lectorRondas = null;
 		try {
 			lectorRondas = new Scanner(fichero);
@@ -71,14 +74,23 @@ public class Metodos {
 
 				}
 				System.out.println(lectorRondas.nextLine());
+				
 			}
 			lectorRondas.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+		return recordActual;
 
 	}
 	
+	public boolean recordSuperado(int record,int recordActual) {
+		recordPartida = juego.getRonda();
+		if (recordPartida >  recordActual ) {
+			return true;
+		}
+		return false;
+	}
 	private void iniciarPartida() {
 		System.out.println("Bienvenido al RandomSouls:");
 		System.out.print("¿Cuántas rondas quieres jugar? ");
@@ -143,11 +155,11 @@ public class Metodos {
 		if (juego.getJugador().muerto()) {
 			System.out.println("Has perdido ,consejo del juego: Get good");
 			registroDeRecord();
-			leerRecord();
+			leerRecord(recordActual);
 		} else {
 			System.out.println("Felicidades has eliminado a todos los enemigos");
 			registroDeRecord();
-			leerRecord();
+			leerRecord(recordActual);
 		}
 	}
 
