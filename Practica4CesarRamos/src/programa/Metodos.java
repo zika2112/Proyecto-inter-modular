@@ -12,7 +12,7 @@ import clases.Jugable;
 public class Metodos {
 	private Scanner scanner;
 	private Juego juego;
-
+	File fichero = new File("Mejor Puntuacion.txt");
 	public Metodos() {
 		scanner = new Scanner(System.in);
 		juego = new Juego();
@@ -37,20 +37,16 @@ public class Metodos {
 			jugarOtraVez = preguntarJugarOtraVez();
 		}
 	}
-
+	
 	public void registroDeRecord() {
-		File fichero = new File("Mejor Puntuacion.txt");
 
 		try {
 			PrintWriter escritor = new PrintWriter(fichero);
-			int record = 0;
-			record = juego.getRonda();
-			if (juego.getRonda() > record) {
-				escritor.println("New Record (sal de casa)" + "\n. Nombre Jugador/a: " + juego.getJugador().getNombre()
-						+ "\n. Rondas Ganadas: " 
-						+ "\n. " + juego.getRonda());
-				escritor.close();
-			}
+
+			escritor.println("New Record (sal de casa)" + "\n. Nombre Jugador/a: " + juego.getJugador().getNombre()
+					+ "\n. Rondas Ganadas: " + "\n. " + juego.getRonda());
+			escritor.close();
+
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -64,14 +60,16 @@ public class Metodos {
 			}
 		}
 
+	}
+
+	public void leerRecord() {
 		Scanner lectorRondas = null;
 		try {
 			lectorRondas = new Scanner(fichero);
 			while (lectorRondas.hasNextLine()) {
-				if(lectorRondas.hasNextInt()) {
-					int puntos = lectorRondas.nextInt();
+				if (lectorRondas.hasNextInt()) {
+
 				}
-				
 				System.out.println(lectorRondas.nextLine());
 			}
 			lectorRondas.close();
@@ -80,7 +78,7 @@ public class Metodos {
 		}
 
 	}
-
+	
 	private void iniciarPartida() {
 		System.out.println("Bienvenido al RandomSouls:");
 		System.out.print("¿Cuántas rondas quieres jugar? ");
@@ -145,9 +143,11 @@ public class Metodos {
 		if (juego.getJugador().muerto()) {
 			System.out.println("Has perdido ,consejo del juego: Get good");
 			registroDeRecord();
+			leerRecord();
 		} else {
 			System.out.println("Felicidades has eliminado a todos los enemigos");
 			registroDeRecord();
+			leerRecord();
 		}
 	}
 
