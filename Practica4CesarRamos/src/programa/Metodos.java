@@ -3,6 +3,7 @@ package programa;
 import java.util.Scanner;
 import clases.Enemigo;
 import clases.Juego;
+import clases.Jugable;
 
 public class Metodos  {
     private Scanner scanner;
@@ -61,7 +62,7 @@ public class Metodos  {
     }
     
     private void mostrarEstadoJuego() {
-    	System.out.println("Turno: "+ (juego.getTurno() + 1) + "/" + juego.getNturno() );
+    	
         System.out.println("Ronda: " + (juego.getRonda() + 1) + "/" + juego.getNRondas());
         System.out.println("Estás luchando contra: " + juego.getSiguiente());
         System.out.println("Eres: " + juego.getJugador());
@@ -82,17 +83,15 @@ public class Metodos  {
             juego.getJugador().atacar(enemigo);
         } else {
             System.out.println(juego.getJugador().getNombre() + " se cura");
-            juego.getJugador().curar();
+            ((Jugable)juego.getJugador()).curar();
+            
         }
         
         if (!enemigo.muerto()) {
             System.out.println(enemigo.getNombre() + " ataca a " + juego.getJugador().getNombre());
               juego.getSiguiente().atacar(juego.getJugador());
         }
-        if(juego.getNturno() % 4 == 0) {
-        	System.out.println(enemigo.getNombre() + " ha recuperado fuerza y se cura");
-            enemigo.curar();
-        }
+       
     }
     
     private void finalizarPartida() {

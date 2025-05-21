@@ -18,8 +18,5 @@ public class Enemigo extends Personaje {
 		this.defensa = random.nextInt(3) + 1;
 	}
 
-	@Override
-	public void curar() {
-		this.vida =+ 20;
-	}
+	
 }

@@ -85,6 +85,6 @@ public abstract class  Personaje {
 		this.nombre = nombre;
 	}
 
-	public abstract void curar();
+	
 
 }
