@@ -42,46 +42,40 @@ public class Metodos {
 	}
 	
 	public void registroDeRecord() {
+		int recordAnterior = leerRecord();
+		int recordNuevo = juego.getRonda();
 
-		try {
-			PrintWriter escritor = new PrintWriter(fichero);
-
-			escritor.println("New Record (sal de casa)" + "\n. Nombre Jugador/a: " + juego.getJugador().getNombre()
-					+ "\n. Rondas Ganadas: " + "\n. " + juego.getRonda());
-			escritor.close();
-
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		if (fichero.exists()) {
-			System.out.println("Record actualizado (toca el cesped)");
-		} else {
-			try {
-				fichero.createNewFile();
-			} catch (IOException e) {
+		if (recordNuevo > recordAnterior) {
+			try (PrintWriter escritor = new PrintWriter(fichero)) {
+				escritor.println("New Record (sal de casa)");
+				escritor.println(". Nombre Jugador/a: " + juego.getJugador().getNombre());
+				escritor.println(". Rondas Ganadas:");
+				escritor.println(recordNuevo);
+				System.out.println("Nuevo récord guardado!");
+			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
+		} else {
+			System.out.println("No superaste el récord actual de " + recordAnterior + " rondas.");
 		}
-
 	}
 
-	public int leerRecord(int recordActual) {
-		Scanner lectorRondas = null;
-		try {
-			lectorRondas = new Scanner(fichero);
-			while (lectorRondas.hasNextLine()) {
-				if (lectorRondas.hasNextInt()) {
 
+	public int leerRecord() {
+		int record = 0;
+		try (Scanner lectorRondas = new Scanner(fichero)) {
+			while (lectorRondas.hasNextLine()) {
+				String linea = lectorRondas.nextLine();
+				if (linea.contains("Rondas Ganadas:")) {
+					String numeroTexto = lectorRondas.nextLine().trim();
+					record = Integer.parseInt(numeroTexto);
+					break;
 				}
-				System.out.println(lectorRondas.nextLine());
-				
 			}
-			lectorRondas.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		return recordActual;
-
+		return record;
 	}
 	
 	public boolean recordSuperado(int record,int recordActual) {
@@ -155,11 +149,11 @@ public class Metodos {
 		if (juego.getJugador().muerto()) {
 			System.out.println("Has perdido ,consejo del juego: Get good");
 			registroDeRecord();
-			leerRecord(recordActual);
+			
 		} else {
 			System.out.println("Felicidades has eliminado a todos los enemigos");
 			registroDeRecord();
-			leerRecord(recordActual);
+			
 		}
 	}
 
