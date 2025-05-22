@@ -47,11 +47,12 @@ public class Metodos {
 
 		if (recordNuevo >= recordAnterior) {
 			try (PrintWriter escritor = new PrintWriter(fichero)) {
-				escritor.println("New Record (sal de casa)");
+				escritor.println("New Record");
 				escritor.println(". Nombre Jugador/a: " + juego.getJugador().getNombre());
 				escritor.println(". Rondas Ganadas:");
 				escritor.println(recordNuevo);
-				System.out.println("NUEVO RECORD!! Sal a tocar cesped" + juego.getJugador().getNombre());
+				System.out.println("NUEVO RECORD!! Sal a tocar cesped jugador:" + juego.getJugador().getNombre() + 
+						"Las rondas del nuevo record son: " + juego.getRonda());
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}

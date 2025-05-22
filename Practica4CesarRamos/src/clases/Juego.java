@@ -12,8 +12,6 @@ public class Juego {
 	private Personaje jugador;
 	private int nRondas;
 	private int ronda;
-	private int Nturno;
-	private int Turno;
 	public Juego() {
 		enemigos = new ArrayList<>();
 	}
@@ -89,19 +87,5 @@ public class Juego {
 		this.ronda = ronda;
 	}
 
-	public int getNturno() {
-		return Nturno;
-	}
-
-	public void setNturno(int nturno) {
-		Nturno = nturno;
-	}
-
-	public int getTurno() {
-		return Turno;
-	}
-
-	public void setTurno(int turno) {
-		Turno = turno;
-	}
+	
 }
