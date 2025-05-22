@@ -1,0 +1,4 @@
+New Record
+. Nombre Jugador/a: er
+. Rondas Ganadas:
+5

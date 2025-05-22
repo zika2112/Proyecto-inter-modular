@@ -2,7 +2,6 @@ package programa;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 import clases.Enemigo;
@@ -51,8 +50,8 @@ public class Metodos {
 				escritor.println(". Nombre Jugador/a: " + juego.getJugador().getNombre());
 				escritor.println(". Rondas Ganadas:");
 				escritor.println(recordNuevo);
-				System.out.println("NUEVO RECORD!! Sal a tocar cesped jugador:" + juego.getJugador().getNombre() + 
-						"Las rondas del nuevo record son: " + juego.getRonda());
+				System.out.println("NUEVO RECORD!! Sal a tocar cesped jugador:" + juego.getJugador().getNombre()
+						+ " Las rondas del nuevo record son: " + juego.getRonda());
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
@@ -61,31 +60,32 @@ public class Metodos {
 		}
 	}
 
-
 	public int leerRecord() {
 		int record = 0;
+
+		if (!fichero.exists()) {
+			System.out.println("Archivo de récords no encontrado. Comenzando con récord inicial de 0.");
+			return record;
+		}
+
 		try (Scanner lectorRondas = new Scanner(fichero)) {
 			while (lectorRondas.hasNextLine()) {
 				String linea = lectorRondas.nextLine();
 				if (linea.contains("Rondas Ganadas:")) {
-					String numeroTexto = lectorRondas.nextLine().trim();
-					record = Integer.parseInt(numeroTexto);
+					if (lectorRondas.hasNextLine()) {
+						String numeroTexto = lectorRondas.nextLine().trim();
+						record = Integer.parseInt(numeroTexto);
+					}
 					break;
 				}
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+
 		return record;
 	}
-	
-	public boolean recordSuperado(int record,int recordActual) {
-		recordPartida = juego.getRonda();
-		if (recordPartida >  recordActual ) {
-			return true;
-		}
-		return false;
-	}
+
 	private void iniciarPartida() {
 		System.out.println("Bienvenido al RandomSouls:");
 		System.out.print("¿Cuántas rondas quieres jugar? ");
