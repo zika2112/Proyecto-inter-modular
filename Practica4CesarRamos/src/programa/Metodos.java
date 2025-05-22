@@ -51,7 +51,7 @@ public class Metodos {
 				escritor.println(". Nombre Jugador/a: " + juego.getJugador().getNombre());
 				escritor.println(". Rondas Ganadas:");
 				escritor.println(recordNuevo);
-				System.out.println("Nuevo récord guardado!");
+				System.out.println("Sal a tocar cesped");
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
