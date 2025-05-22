@@ -45,7 +45,7 @@ public class Metodos {
 		int recordAnterior = leerRecord();
 		int recordNuevo = juego.getRonda();
 
-		if (recordNuevo > recordAnterior) {
+		if (recordNuevo >= recordAnterior) {
 			try (PrintWriter escritor = new PrintWriter(fichero)) {
 				escritor.println("New Record (sal de casa)");
 				escritor.println(". Nombre Jugador/a: " + juego.getJugador().getNombre());
