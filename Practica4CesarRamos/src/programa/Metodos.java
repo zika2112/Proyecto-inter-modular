@@ -43,7 +43,6 @@ public class Metodos {
 	public void registroDeRecord() {
 		int recordAnterior = leerRecord();
 		int recordNuevo = juego.getRonda();
-
 		if (recordNuevo >= recordAnterior) {
 			try (PrintWriter escritor = new PrintWriter(fichero)) {
 				escritor.println("New Record");
