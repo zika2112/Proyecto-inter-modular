@@ -49,11 +49,18 @@ public class GuerreroTest {
     }
 
     @Test
-    void testResetearRestauraPociones() {
+    void testResetearDespuesDeMuerteRestauraPociones() {
+        
         guerrero.curar(); 
-        guerrero.resetear(); 
+        guerrero.curar(); 
 
-        String descripcion = guerrero.toString();
-        assertTrue(descripcion.contains("Pociones : 2"), "Si hace reset debe tener 2 pociones");
+        String sinPociones = guerrero.toString();
+        assertTrue(sinPociones.contains("Pociones : 0"), "Debe estar sin pociones antes de resetear");
+
+        
+        guerrero.resetear();
+
+        String despuesDeReset = guerrero.toString();
+        assertTrue(despuesDeReset.contains("Pociones : 2"), "Resetear debe restaurar las pociones a 2 incluso después de morir");
     }
 }
