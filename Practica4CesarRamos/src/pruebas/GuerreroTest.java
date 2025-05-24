@@ -14,21 +14,21 @@ public class GuerreroTest {
 
     @BeforeAll
     static void setupAll() {
-        System.out.println("Inicializando pruebas...");
-        guerrero = new Guerrero("Conan", 100);
+        System.out.println("Haciendo pruebas");
+        guerrero = new Guerrero("Nombre", 100);
     }
 
     @BeforeEach
     void setup() {
-        System.out.println("Reseteando estado del Guerrero...");
+        System.out.println("Reset Guerrero");
         guerrero.resetear();
     }
 
     @Test
     void testToStringContieneNombreYPociones() {
         String descripcion = guerrero.toString();
-        assertTrue(descripcion.contains("Conan"), "toString debe contener el nombre");
-        assertTrue(descripcion.contains("Pociones : 2"), "Debe iniciar con 2 pociones");
+        assertTrue(descripcion.contains("Nombre"), "toString debe contener el nombre");
+        assertTrue(descripcion.contains("Pociones : 2"), "Empezara con 2 pociones");
     }
 
     @Test
@@ -54,6 +54,6 @@ public class GuerreroTest {
         guerrero.resetear(); 
 
         String descripcion = guerrero.toString();
-        assertTrue(descripcion.contains("Pociones : 2"), "Resetear debe restaurar las pociones a 2");
+        assertTrue(descripcion.contains("Pociones : 2"), "Si hace reset debe tener 2 pociones");
     }
 }
