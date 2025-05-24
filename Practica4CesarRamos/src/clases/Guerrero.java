@@ -28,4 +28,10 @@ public class Guerrero extends Personaje implements Jugable{
 	public String toString() {
 		return super.toString() + "; Pociones : " + pociones;
 	}
+
+
+	public void recibirDanio(int i) {
+		
+		
+	}
 }
