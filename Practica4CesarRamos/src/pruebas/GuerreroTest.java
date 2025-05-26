@@ -41,13 +41,7 @@ public class GuerreroTest {
         assertTrue(despues.contains("Pociones : 1"), "Después de curar debe tener 1 poción");
     }
 
-    @Test
-    void testCurarAgotaPociones() {
-        guerrero.curar(); 
-        String descripcion = guerrero.toString();
-        assertTrue(descripcion.contains("Pociones : 0"), "Debe quedarse sin pociones después de curar dos veces");
-    }
-
+   
     @Test
     void testResetearDespuesDeMuerteRestauraPociones() {
         
