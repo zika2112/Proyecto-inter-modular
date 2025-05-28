@@ -41,7 +41,6 @@ public class Metodos {
 	}
 	
 	public void registroDeRecord() {
-		hola
 		int recordAnterior = leerRecord();
 		int recordNuevo = juego.getRonda();
 		if (recordNuevo >= recordAnterior) {
